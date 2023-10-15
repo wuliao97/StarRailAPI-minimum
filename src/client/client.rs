@@ -146,13 +146,11 @@ impl Client<'_> {
     }
 
     #[cfg(feature = "starrail")]
-    pub async fn get_starrail_rogue(&self, uid: Option<u32>, schedule_type: Option<i32>, lang: Option<&str>) -> anyhow::Result<()> {
+    pub async fn get_starrail_rogue(&self, uid: Option<u32>, schedule_type: Option<i32>, lang: Option<&str>) -> anyhow::Result<chronicle::rogue::Rogue> {
         let result = self.starrail.0.get_rouge(uid, schedule_type, lang)
             .await
             .unwrap();
-
-        dbg!(result);
-        Ok(())
+        Ok(result)
     }
 }
 
